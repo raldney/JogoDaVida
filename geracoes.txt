@@ -1,0 +1,10 @@
+
+ Arquivo: /home/raldney/NetBeansProjects/JogoDaVida/src/geracoes.txt
+
+ Ciclos: 5
+
+ Matriz do arquivo: 
+
+
+ Matriz Final: 
+
