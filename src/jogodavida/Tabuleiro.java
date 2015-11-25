@@ -41,19 +41,22 @@ public class Tabuleiro {
 
     public synchronized void setNovasCelulas(int i, int j, int valor) {
         this.novasCelulas[i][j] = valor;
+        notifyAll();
     }
 
     public synchronized void reduzirThread(String nome) {
         this.threads--;
-        System.out.println(nome + " Acabou! o tabuleiro tem " + this.threads + " threads restantes");
-
+        //System.out.println(nome + " Acabou! o tabuleiro tem " + this.threads + " threads restantes");
+        notifyAll();
     }
 
     public synchronized int getLinha() {
+        notifyAll();
         return linha++;
     }
 
     public synchronized int getColuna() {
+        notifyAll();
         return coluna++;
     }
 

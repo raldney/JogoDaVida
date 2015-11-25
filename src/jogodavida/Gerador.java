@@ -41,4 +41,5 @@ public class Gerador extends Thread {
         }
         geracao.reduzirThread(this.nome);
     }
+    
 }

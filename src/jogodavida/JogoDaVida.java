@@ -33,12 +33,12 @@ public class JogoDaVida {
             arquivo.gravar("\n\n Ciclos: " + ciclos);
             String linha = lerArq.readLine();
             arquivo.gravar("\n Matriz do arquivo: \n");
-
             while (linha != null) {
 
                 if (x == -1) {
                     x = Integer.parseInt(linha);
-                    matriz = new int[1002][1002];
+
+                    matriz = new int[x][x];
                     linha = lerArq.readLine();
                     continue;
 
@@ -58,7 +58,7 @@ public class JogoDaVida {
 
             arq.close();
             geracao2 = new Tabuleiro(matriz);
-            iniciar(ciclos, arquivo);
+            iniciar(3000, arquivo);
             arquivo.fechar();
         } catch (IOException e) {
             System.err.printf("Erro na abertura do arquivo: %s.\n", e.getMessage());
@@ -69,7 +69,7 @@ public class JogoDaVida {
 
         int n = 0;
         while (n < x) {
-            geracao2.threads = 4;
+            geracao2.threads = 1;
             Gerador g = new Gerador(geracao2, "Thread 1");
             g.start();
             Gerador g2 = new Gerador(geracao2, "Thread 2");
@@ -78,7 +78,13 @@ public class JogoDaVida {
             g3.start();
             Gerador g4 = new Gerador(geracao2, "Thread 4");
             g4.start();
-            while (geracao2.threads > 0);
+            while (geracao2.threads > 0) {
+                try {
+                    System.out.println("Threads em processamento");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
             geracao2 = geracao2.novaGeracao();
             n++;
         }
