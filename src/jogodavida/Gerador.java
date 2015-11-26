@@ -23,9 +23,9 @@ public class Gerador extends Thread {
 
     @Override
     public void run() {
-        int vizinhos = 0;
         for (int i = geracao.getLinha(); i <= geracao.tamanhoTabuleiro(); i = geracao.getLinha()) {
             for (int j = 0; j <= geracao.tamanhoTabuleiro(); j++) {
+                int vizinhos = 0;
                 vizinhos = geracao.getVizinhos(i, j);
                 if (geracao.celulas[i][j] == 1) {
                     if (vizinhos < 2 || vizinhos > 3) {

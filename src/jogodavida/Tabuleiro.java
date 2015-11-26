@@ -77,9 +77,11 @@ public class Tabuleiro {
                 }
             }
         }
+        
         if (i < celulas.length - 1) {
             if (celulas[i + 1][j] == 1) {
                 count++;
+                
             }
         }
         if (j > 0) {
@@ -91,9 +93,6 @@ public class Tabuleiro {
                     if (celulas[i - 1][j + 1] == 1) {
                         count++;
                     }
-                }
-                if (celulas[i - 1][j - 1] == 1) {
-                    count++;
                 }
             }
             if (i < celulas.length - 1) {
@@ -111,6 +110,7 @@ public class Tabuleiro {
                 count++;
             }
         }
+        
         return count;
     }
 

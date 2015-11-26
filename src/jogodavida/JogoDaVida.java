@@ -29,28 +29,20 @@ public class JogoDaVida {
             ciclos = Integer.parseInt(args[1]);
             BufferedReader lerArq = new BufferedReader(arq);
 
-            arquivo.gravar("\n Arquivo: " + args[0]);
-            arquivo.gravar("\n\n Ciclos: " + ciclos);
             String linha = lerArq.readLine();
-            arquivo.gravar("\n Matriz do arquivo: \n");
             while (linha != null) {
 
                 if (x == -1) {
                     x = Integer.parseInt(linha);
-
                     matriz = new int[x][x];
                     linha = lerArq.readLine();
                     continue;
 
                 }
-
                 for (int j = 1; j <= x; j++) {
-                    arquivo.gravar(" " + linha.substring(j - 1, j));
                     matriz[i][j - 1] = Integer.parseInt(linha.substring(j - 1, j));
 
                 }
-
-                arquivo.gravar("\n");
                 i++;
                 linha = lerArq.readLine();
 
@@ -58,7 +50,7 @@ public class JogoDaVida {
 
             arq.close();
             geracao2 = new Tabuleiro(matriz);
-            iniciar(3000, arquivo);
+            iniciar(2, arquivo);
             arquivo.fechar();
         } catch (IOException e) {
             System.err.printf("Erro na abertura do arquivo: %s.\n", e.getMessage());
@@ -80,7 +72,7 @@ public class JogoDaVida {
             g4.start();
             while (geracao2.threads > 0) {
                 try {
-                    System.out.println("Threads em processamento");
+                    // System.out.println("Threads em processamento");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -88,12 +80,11 @@ public class JogoDaVida {
             geracao2 = geracao2.novaGeracao();
             n++;
         }
-        arquivo.gravar("\n Matriz Final: \n\n");
         int tamanho = geracao2.tamanhoTabuleiro();
         int[][] celulas = geracao2.getCelulas();
         for (int i = 0; i <= (tamanho); i++) {
             for (int j = 0; j <= (tamanho); j++) {
-                arquivo.gravar(" " + celulas[i][j]);
+                arquivo.gravar("" + celulas[i][j]);
             }
             arquivo.gravar("\n");
         }
