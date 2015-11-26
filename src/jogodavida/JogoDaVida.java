@@ -58,7 +58,7 @@ public class JogoDaVida {
 
             arq.close();
             geracao2 = new Tabuleiro(matriz);
-            iniciar(3000, arquivo);
+            iniciar(ciclos, arquivo);
             arquivo.fechar();
         } catch (IOException e) {
             System.err.printf("Erro na abertura do arquivo: %s.\n", e.getMessage());
